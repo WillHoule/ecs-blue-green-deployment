@@ -81,7 +81,9 @@ def find_beta_targetgroup():
     """
 
     listners = elb_client.describe_listeners(LoadBalancerArn=describe_elb_response['LoadBalancers'][0]['LoadBalancerArn'])
-
+    
+    livelistenerarn = ''
+    betalistenerarn = ''
     for x in listners['Listeners']:
         if (x['Port'] == 80):
             livelistenerarn = x['ListenerArn']
